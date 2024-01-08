@@ -117,13 +117,13 @@ const ThreadCard = ({
       {!isComment && comments.length > 0 && (
         <Link href={`/thread/${id}`} className="mt-5 flex items-center">
           <div className="flex items-center mr-2">
-            {comments.map((comment, index) => (
+            {comments.slice(0, 2).map((comment, index) => (
               <Image
                 key={index}
                 src={comment.author.image}
                 alt={`user_${index}`}
-                width={28}
-                height={28}
+                width={24}
+                height={24}
                 className={`${
                   index !== 0 && "-ml-4"
                 } rounded-full object-cover`}

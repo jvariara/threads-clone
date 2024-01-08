@@ -111,10 +111,31 @@ const ThreadCard = ({
             </div>
           </div>
         </div>
-
-        {/* TODO: Delete thread */}
-        {/* TODO: Show comment logos */}
       </div>
+      {/* TODO: Delete thread */}
+      {/* TODO: Show comment logos */}
+      {!isComment && comments.length > 0 && (
+        <Link href={`/thread/${id}`} className="mt-5 flex items-center">
+          <div className="flex items-center mr-2">
+            {comments.map((comment, index) => (
+              <Image
+                key={index}
+                src={comment.author.image}
+                alt={`user_${index}`}
+                width={28}
+                height={28}
+                className={`${
+                  index !== 0 && "-ml-4"
+                } rounded-full object-cover`}
+              />
+            ))}
+          </div>
+          <p className="text-subtle-medium text-gray-1">
+            {comments.length} replies
+          </p>
+        </Link>
+      )}
+
       {!isComment && community && (
         <Link
           href={`/communities/${community.id}`}

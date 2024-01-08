@@ -9,7 +9,9 @@ const Page = async () => {
   if (!user) return null;
 
   const userInfo = await fetchUser(user.id);
-
+  // bring user to onboarding if they havent onboarded yet
+  if (!userInfo?.onboarded) redirect("/onboarding");
+  
   // Fetch users
   const result = await fetchUsers({
     userId: user.id,
@@ -18,8 +20,6 @@ const Page = async () => {
     pageSize: 25,
   });
 
-  // bring user to onboarding if they havent onboarded yet
-  if (!userInfo?.onboarded) redirect("/onboarding");
   return (
     <section>
       <h1 className="head-text mb-10">Search</h1>
